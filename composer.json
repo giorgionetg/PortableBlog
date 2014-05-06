@@ -1,0 +1,22 @@
+{
+    "name": "giorgionetg/PorableBlog",
+    "description": "A Blog/Page API you can bring everywhere",
+    "version": "0.0.1-dev",
+    "license": "WTFPL",
+    "authors": [
+        {
+            "name": "Giorgio Tedesco",
+            "email": "giorgionetg@gmail.com",
+            "homepage": "http://giorgiotedesco.it",
+            "role": "Lead Developer"
+        }
+    ],
+    "require": {
+        "twig/twig": "1.*",
+        "gabordemooij/redbean": "dev-RedBeanPHP3_5_X",
+        "symfony/http-foundation": "2.5.*@dev"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    }
+}
