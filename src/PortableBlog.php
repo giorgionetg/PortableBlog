@@ -3,14 +3,13 @@
 namespace PortableBlog;
 
 use Exception;
+use PortableBlog\Installation;
 
 class PortableBlog {
     
     protected $dbSettings;
     
     public $appSettings;
-    
-    //public $appErrors;
     
     public function __construct($settings = array())
     {
@@ -26,18 +25,30 @@ class PortableBlog {
             "host"      => "localhost",
             "username"  => "root",
             "password"  => "*********",
-            "char"      => "utf8"
+            "char"      => "utf8",
+            "prefix"    => "pb_"
             );
         $commonAppSettings = array(
             "blogName"  => "Your Blog Name",
             "blogUrl"   => "Your Website Url",
-            "usingType" => "api|admin|frontend"
+            "usingType" => "api|admin|frontend",
+            "tables"    => array(
+                "posts"         => "",
+                "keywords"      => "",
+                "descriptions"  => "",
+                "comments"      => "",
+                "users"         => ""
+            )
         );
         
         $this->dbSettings = array_merge($commonDbSettings, $settings['dbSettings']);
         $this->appSettings = array_merge($commonAppSettings, $settings['appSettings']);
         
+        $installation = new Installation($this->dbSettings, $this->appSettings);
         
+        if ($installation->fails()) {
+            throw new Exception('Installation Fails, Try to make Manual Installation!');
+        }
         
     }
     
@@ -47,8 +58,8 @@ class PortableBlog {
     }
     
     public function __toString() {
-        $settings = implode($this->appSettings, ', ');
-        return $settings;
+        
+        return 'It Works!';
     }
     
 }
