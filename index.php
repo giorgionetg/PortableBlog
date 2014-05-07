@@ -14,7 +14,7 @@ $settings['appSettings'] = array(
     "blogName" => "giorgionetg",
 );
 
-use PortableBlog\PortableBlog;
+use Giorgionetg\PortableBlog\PortableBlog;
 
 try {
     $obj = new PortableBlog($settings);

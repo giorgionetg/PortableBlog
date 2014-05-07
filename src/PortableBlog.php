@@ -1,9 +1,9 @@
 <?php
 
-namespace PortableBlog;
+namespace Giorgionetg\PortableBlog;
 
 use Exception;
-use PortableBlog\Installation;
+use Giorgionetg\PortableBlog\Installation;
 
 class PortableBlog {
     

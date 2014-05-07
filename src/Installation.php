@@ -1,6 +1,6 @@
 <?php
 
-namespace PortableBlog;
+namespace Giorgionetg\PortableBlog;
 
 use Exception;
 
