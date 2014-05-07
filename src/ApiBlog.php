@@ -15,4 +15,27 @@ class ApiBlog extends PortableBlog {
         
     }
     
+    public function getContent($slug)
+    {
+        $post = new Post();
+        return $post;
+    }
+    
+    public function getContents($slug)
+    {
+        $post = new Post();
+        return $post;
+    }
+    
+    public function saveContent($slug)
+    {
+        $post = new Post();
+        return $post;
+    }
+    
+    public function deleteContent($slug)
+    {
+        $post = new Post();
+        return $post;
+    }
 }

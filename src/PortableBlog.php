@@ -31,7 +31,7 @@ class PortableBlog {
         $commonAppSettings = array(
             "blogName"  => "Your Blog Name",
             "blogUrl"   => "Your Website Url",
-            "usingType" => "api|admin|frontend",
+            "usingType" => "api|backend|frontend",
             "tables"    => array(
                 "posts"         => "",
                 "keywords"      => "",
@@ -52,7 +52,17 @@ class PortableBlog {
         
     }
     
-    public function getContent($slug)
+    public function getApi($slug)
+    {
+        
+    }
+    
+    public function getBackend()
+    {
+        
+    }
+    
+    public function getFrontend()
     {
         
     }
