@@ -2,23 +2,28 @@
 
 namespace Giorgionetg\PortableBlog;
 
-use Giorgionetg\PortableBlog\PortableBlog;
-/**
- * Description of ApiBlog
- *
- * @author giorgionetg
- */
-class ApiBlog extends PortableBlog {
+class ApiBlog {
     
-    public function __construct($settings = array()) {
-        parent::__construct($settings);
+    public $type;
+    public $post;
+    public $comments;
+    public $keywords;
+    public $description;
+    public $user;
+    
+    public function __construct($tables = array()) {
+        
         
     }
     
     public function getContent($slug)
     {
-        $post = new Post();
-        return $post;
+        $this->type = 'page';
+        $this->post->title = 'il titolo del Contenuto di prova';
+        $this->post->content = 'Contenuto di prova';
+        $this->keywords = array('system-platform' => 'Platform System');
+        $this->description = 'Breve descrizione..';
+        return $this;
     }
     
     public function getContents($slug)
