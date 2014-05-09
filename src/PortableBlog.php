@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * PortableBlog library application permits a bridge with common CMS as Wordpress
+ * to have own custom Api to make changements.
+ */
 namespace Giorgionetg\PortableBlog;
 
 use Exception;
@@ -8,7 +11,10 @@ use Giorgionetg\PortableBlog\ApiBlog;
 use Symfony\Component\HttpFoundation\Request;
 
 class PortableBlog {
-    
+    /**
+     *
+     * @var type 
+     */
     private $plug = NULL;
     
     public function __construct($ownPlug)

@@ -1,4 +1,7 @@
 <?php
+/**
+ * 
+ */
 
 namespace Giorgionetg\PortableBlog;
 

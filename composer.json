@@ -15,7 +15,7 @@
         "twig/twig": "1.*",
         "gabordemooij/redbean": "dev-RedBeanPHP3_5_X",
         "symfony/http-foundation": "2.5.*@dev",
-        "phpdocumentor/phpdocumentor": "2.*"
+        "phpdocumentor/phpdocumentor": "2.0.0"
     },
     "autoload": {
         "classmap": ["src/"]
