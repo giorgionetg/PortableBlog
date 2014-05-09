@@ -18,6 +18,12 @@ class PortableBlog {
             case 'Portable':
                 $this->plug = new ApiBlog();
                 break;
+            case 'PortableBackend':
+                $this->plug = new PortableBackend();
+                break;
+            case 'PortableFrontend':
+                $this->plug = new PortableFrontend();
+                break;
             case 'WordPress':
                 $this->plug = new WpBlog();
                 break;
@@ -30,17 +36,17 @@ class PortableBlog {
     
     public function getTitle()
     {
-        $this->plug->getTitle();
+        return $this->plug->getTitle();
     }
     
     public function getContent()
     {
-        $this->plug->getContent();
+        return $this->plug->getContent();
     }
     
     public function getTime()
     {
-        $this->plug->getTime();
+        return $this->plug->getTime();
     }
     
     public function getAuthor()
@@ -48,4 +54,18 @@ class PortableBlog {
         return $this->plug->getAuthor();
     }
     
+    public function getSeo()
+    {
+        return $this->plug->getSeo();
+    }
+    
+    public function getComments()
+    {
+        return $this->plug->getComments();
+    }
+    
+    public function getList()
+    {
+        return $this->plug->getList();
+    }
 }
