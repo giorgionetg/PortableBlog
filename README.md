@@ -2,17 +2,19 @@ PortableBlog
 ============
 **PortableBlog** is your lightweight platform for Blogging and Managing Content in your *Framework*.. Just because it is Framework Agnostic. 
 
-You can use *PortableBlog* as an Object and get your content Seo-ready, or you can use *PortableBlog* to manage Articles and Pages via Admin Panel.
+**PortableBlog** library application permits a bridge with common CMS as Wordpress to have own custom Api to make changements. In other hand we have a common Library to make Page/News easy everywhere as StandAlone Application or inside a Route of own preferred Framework.
+
+You can use **PortableBlog** as an Object and get your content Seo-ready, or you can use **PortableBlog** to manage Articles and Pages via Admin Panel too.
 
 #Abstract
-**PortableBlog** is composed from a main class we use as a *Router* to redirect all *Requests* to specific Classes defined here:
+**PortableBlog** follows *Strategy Pattern* for PortableBlog Class, then uses Installation as Iterator (but I need to finish):
 
-*  Installation
-*  PortableBlog *(Main Class as Router)*
-*  ApiBlog
-*  BackendBlog
-*  FrontendBlog
-
+*  Installation (Iterator)
+*  PortableBlog *(Strategy Pattern Ready)*
+*  ApiBlog *(extends Content)*
+*  Content *(uses RedBean)*
 
 ##Roadmap
-Actually I just started this project in these days.
+*  Making ApiBlog Class working.
+*  Improve Installation Class
+*  Merging and understanding how merge settings and datas
