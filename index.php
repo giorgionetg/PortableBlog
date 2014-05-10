@@ -2,7 +2,7 @@
 
 require_once 'vendor/autoload.php';
 
-$settings['dbSettings'] = array(
+/*$settings['dbSettings'] = array(
     "driver" => "mysql",
     "host" => "localhost",
     "username" => "root",
@@ -13,22 +13,26 @@ $settings['dbSettings'] = array(
 $settings['appSettings'] = array(
     "blogName" => "giorgionetg",
     "usingType" => "api"
-);
+);*/
 
 use Giorgionetg\PortableBlog\PortableBlog;
+use Giorgionetg\PortableBlog\Installation;
 use Symfony\Component\HttpFoundation\Request;
 
 try {
+    $ownRequest = Request::create('/get-all-blog');
     
-    $request = Request::createFromGlobals();
+    $settings = new Installation('Base');
+    $settings->set('driver', 'mysql');
+    $settings->set('host', 'localhost');
     
-    $obj = new PortableBlog($request, $settings);
-    //var_dump($obj->appSettings);
-    //var_dump(count(explode('|', $obj->appSettings['usingType'])) > 1);
-    //exit();
-    $nowWat = $obj->execute();
-    var_dump($nowWat);
-    //echo $obj;
+    $portableBlog = new PortableBlog('ApiBlog', $settings);
+    //$portableBlog->overrideRequest($ownRequest);
+    echo '<pre>';
+    var_dump($portableBlog);
+    echo '</pre><hr /><pre>';
+    var_dump($portableBlog->getContent());
+    
 } catch (Exception $msg) {
     echo $msg->getMessage();
 }

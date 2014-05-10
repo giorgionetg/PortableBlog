@@ -8,16 +8,21 @@ namespace Giorgionetg\PortableBlog;
 use Exception;
 
 class Installation {
-    
-    public function __construct($dbconn = array(), $tables = array())
-    {
-        if (empty($tables)) {
-            throw new Exception('There are any tables on setup');
-        }
+
+    private $settings = NULL;
+    public $name = NULL;
+    public function __construct($name) {
+        $this->name = $name;
     }
     
-    public function fails()
+    public function set($key, $value)
     {
-        return False;
+        return $this->settings[$key] = $value;
     }
+    
+    public function get($key)
+    {
+        return $this->settings[$key];
+    }
+    
 }

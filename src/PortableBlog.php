@@ -1,7 +1,13 @@
 <?php
 /**
  * PortableBlog library application permits a bridge with common CMS as Wordpress
- * to have own custom Api to make changements.
+ * to have own custom Api to make changements. In other hand we have a common
+ * Library to make Page/News easy everywhere as StandAlone Application or inside
+ * a Route of own preferred Framework.
+ * 
+ * This Library uses Strategy Pattern to make any kind of extension.
+ * 
+ * @package Giorgionetg\PortableBlog
  */
 namespace Giorgionetg\PortableBlog;
 
@@ -17,12 +23,17 @@ class PortableBlog {
      */
     private $plug = NULL;
     
-    public function __construct($ownPlug)
+    public $request = NULL;
+    
+    public function __construct($ownPlug, Installation $settings)
     {
+        
+        
+        
         
         switch ($ownPlug){
             case 'Portable':
-                $this->plug = new ApiBlog();
+                $this->plug = new ApiBlog($settings);
                 break;
             case 'PortableBackend':
                 $this->plug = new PortableBackend();
@@ -34,44 +45,22 @@ class PortableBlog {
                 $this->plug = new WpBlog();
                 break;
             default:
-                $this->plug = new ApiBlog();
+                $this->plug = new ApiBlog($settings);
                 break;
         }
-        
+        $this->request = Request::createFromGlobals();
     }
     
-    public function getTitle()
+    public function overrideRequest(Request $ownRequest)
     {
-        return $this->plug->getTitle();
+        return $this->request = $ownRequest;
     }
+    
     
     public function getContent()
     {
-        return $this->plug->getContent();
+        return $this->plug->getContent($this->request);
     }
     
-    public function getTime()
-    {
-        return $this->plug->getTime();
-    }
     
-    public function getAuthor()
-    {
-        return $this->plug->getAuthor();
-    }
-    
-    public function getSeo()
-    {
-        return $this->plug->getSeo();
-    }
-    
-    public function getComments()
-    {
-        return $this->plug->getComments();
-    }
-    
-    public function getList()
-    {
-        return $this->plug->getList();
-    }
 }
