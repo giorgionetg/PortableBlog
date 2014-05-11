@@ -15,11 +15,11 @@ class ApiBlog extends Content {
     public $comments;
     public $keywords;
     public $description;
-    public $user; */
+    public $user; 
     
     public function __construct(Installation $settings) {
         
-    }
+    }*/
     
     public function getContent(Request $request)
     {

@@ -16,26 +16,27 @@ use Giorgionetg\PortableBlog\Installation;
 use Giorgionetg\PortableBlog\ApiBlog;
 use Symfony\Component\HttpFoundation\Request;
 
+
+
 class PortableBlog {
-    /**
-     *
-     * @var type 
-     */
+    
     private $plug = NULL;
     
     public $request = NULL;
     
+    /**
+     * 
+     * @param type $ownPlug String
+     * @param \Giorgionetg\PortableBlog\Installation $settings
+     */
     public function __construct($ownPlug, Installation $settings)
     {
-        
-        
-        
         
         switch ($ownPlug){
             case 'Portable':
                 $this->plug = new ApiBlog($settings);
                 break;
-            case 'PortableBackend':
+            /*case 'PortableBackend':
                 $this->plug = new PortableBackend();
                 break;
             case 'PortableFrontend':
@@ -43,7 +44,7 @@ class PortableBlog {
                 break;
             case 'WordPress':
                 $this->plug = new WpBlog();
-                break;
+                break; */
             default:
                 $this->plug = new ApiBlog($settings);
                 break;
@@ -51,16 +52,43 @@ class PortableBlog {
         $this->request = Request::createFromGlobals();
     }
     
+    /**
+     * OverrideRequest() permits to define custom Action Route.
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $ownRequest
+     * @return void
+     */
     public function overrideRequest(Request $ownRequest)
     {
         return $this->request = $ownRequest;
     }
     
-    
+    /**
+     * GetContent() return a mixed item as a string, arry or an object.
+     * 
+     * It depends from Class called inside end if exist an Action Route defined
+     * inside PortableBlog->execute()
+     * 
+     * Giorgionetg\PortableBlog\PortableBlog->__construct
+     * 
+     * 
+     * @return mixed
+     */
     public function getContent()
     {
-        return $this->plug->getContent($this->request);
+        //$this->execute();
+        return $this->plug->getContent();
     }
     
+    /**
+     * Execute return an Action Route to transforms URI to Action in PortableBlog
+     * 
+     * @return string
+     */
+    public function execute()
+    {
+        $string = null;
+        return $string;
+    }
     
 }

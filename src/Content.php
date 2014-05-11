@@ -7,7 +7,7 @@ use R as RedBean;
 use Giorgionetg\PortableBlog\Installation;
 
 class Content {
-    
+
     public $id;
     public $slug;
     public $title;
