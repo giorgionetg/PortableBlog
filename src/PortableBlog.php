@@ -87,7 +87,12 @@ class PortableBlog {
      */
     public function execute()
     {
-        $string = null;
+        if (preg_match('^/api/.$', $this->request)) {
+            switch ($this->request) {
+                case preg_match('', $this->request):
+                    break;
+            }
+        }
         return $string;
     }
     
