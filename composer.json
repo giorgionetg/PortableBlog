@@ -13,9 +13,10 @@
     ],
     "require": {
         "twig/twig": "1.*",
-        "gabordemooij/redbean": "dev-RedBeanPHP3_5_X",
+        "doctrine/dbal": "2.5.*@dev",
         "symfony/http-foundation": "2.5.*@dev",
-        "phpdocumentor/phpdocumentor": "2.0.0"
+        "phpdocumentor/phpdocumentor": "2.0.0",
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "classmap": ["src/"]

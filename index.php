@@ -22,15 +22,18 @@ use Symfony\Component\HttpFoundation\Request;
 try {
     $ownRequest = Request::create('/get-all-blog');
     
+    // Put your DB Settings
     $settings = new Installation('Base');
-    $settings->set('driver', 'mysql');
-    $settings->set('host', 'localhost');
+    $settings->set('db_name', 'portableblog_apiblog');
+    $settings->set('db_host', 'localhost');
+    $settings->set('db_user', 'root');
+    $settings->set('db_password', 'root');
     
     $portableBlog = new PortableBlog('ApiBlog', $settings);
     //$portableBlog->overrideRequest($ownRequest);
     echo '<pre>';
-    var_dump($portableBlog);
-    echo '</pre><hr /><pre>';
+    //var_dump($portableBlog);
+    //echo '</pre><hr /><pre>';
     var_dump($portableBlog->getContent());
     
 } catch (Exception $msg) {

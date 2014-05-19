@@ -3,53 +3,64 @@
 namespace Giorgionetg\PortableBlog;
 
 use Symfony\Component\HttpFoundation\Request;
-use Giorgionetg\PortableBlog\Content;
+//use Giorgionetg\PortableBlog\Content;
+use Giorgionetg\PortableBlog\BlogInterface;
+use Giorgionetg\PortableBlog\Installation;
+use Doctrine\DBAL\Configuration;
+use Doctrine\DBAL\DriverManager;
 
-class ApiBlog extends Content {
-//class ApiBlog {
+class ApiBlog implements BlogInterface {
+
+    public $config;
+    public $conn;
     
+    public function __construct(Installation $settings)
+    {
+        $this->config = new Configuration();
+        $connectionParams = array(
+            'dbname' => $settings->get('db_name'),
+            'user' => $settings->get('db_user'),
+            'password' => $settings->get('db_password'),
+            'host' => $settings->get('db_host'),
+            'driver' => 'pdo_mysql',
+        );
+        $this->conn = DriverManager::getConnection($connectionParams, $this->config);
+        //$this->checkDbTables();
+    }
     
+    public function getContent()
+    {
+        $query = 'SELECT * FROM contents';
+        $row = $this->conn->query($query);
+            $content = '';
+            foreach($row as $getContent){
+                if (end($getContent)) {
+                    $content .= $getContent['slug'] . '.';
+                } else {
+                    $content .= $getContent['slug'] . ', ';
+                }
+            }
+            return $content;
+    }
     
-    /*public $type;
-    public $post;
-    public $comments;
-    public $keywords;
-    public $description;
-    public $user; 
-    
-    public function __construct(Installation $settings) {
+    public function getContentList($slug = null, $fields = array())
+    {
         
-    }*/
-    
-    public function getContent(Request $request)
+    }
+
+    public function getAuthor($slug)
     {
         
-        $this->type = 'page';
-        $this->post = new \stdClass();
-        $this->post->title = 'il titolo del Contenuto di prova';
-        $this->post->content = 'Contenuto di prova';
-        $this->seo = new \stdClass();
-        $this->seo->keywords = array('system-platform' => 'Platform System');
-        $this->seo->description = 'Breve descrizione..';
-        return $this;
     }
-    /*
-    public function getContents($slug)
+
+    public function getSeoData($slug)
     {
-        $post = new Post();
-        return $post;
+        
     }
-    
-    public function saveContent($slug)
+
+    public function getSingleContent($slug)
     {
-        $post = new Post();
-        return $post;
+        
     }
-    
-    public function deleteContent($slug)
-    {
-        $post = new Post();
-        return $post;
-    }*/
-    
+
 }
