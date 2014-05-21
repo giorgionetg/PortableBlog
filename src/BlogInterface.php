@@ -20,8 +20,9 @@ interface BlogInterface {
     public function getSingleContent($slug);
     public function getSeoData($content_slug);
     public function getAuthor($content_slug);
+    public function contentExist($slug);
     
-    public function checkDbTable();
-    public function startInstallation();
+    //public function checkDbTable();
+    //public function startInstallation();
     
 }

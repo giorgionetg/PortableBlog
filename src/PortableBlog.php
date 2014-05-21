@@ -77,7 +77,23 @@ class PortableBlog {
     public function getContent()
     {
         //$this->execute();
-        return $this->plug->getContent();
+        //if ($this->plug->contentExist($this->request)){
+            // Get Content
+        //}
+        
+        if (!$this->plug->contentExist(str_replace('/Blog/', '', $this->request->getRequestUri()))) {
+            if ($this->request->getRequestUri() != '/Blog/'){
+                return '404: no content found';
+            } else {
+                return $this->plug->getContent();
+            }
+            
+        } else {
+            return $this->plug->getContent();
+        }
+        
+        
+        
     }
     
     /**
