@@ -29,10 +29,12 @@ try {
     $settings->set('db_user', 'root');
     $settings->set('db_password', 'root');
     
+    $settings->set('base_url', 'PortableBlog');
+    
     $portableBlog = new PortableBlog('ApiBlog', $settings);
     //$portableBlog->overrideRequest($ownRequest);
     echo '<pre>';
-    //var_dump($portableBlog);
+    //var_dump($portableBlog->request);
     //echo '</pre><hr /><pre>';
     var_dump($portableBlog->getContent());
     

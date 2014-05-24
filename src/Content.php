@@ -2,9 +2,7 @@
 
 namespace Giorgionetg\PortableBlog;
 
-require_once 'rb.phar';
-use R as RedBean;
-use Giorgionetg\PortableBlog\Installation;
+
 
 class Content {
 
@@ -16,38 +14,36 @@ class Content {
     public $seo;
     public $author;
     public $comments;
-    private static $isIstanced = FALSE;
     
-    public function __construct(Installation $settings) {
-        $host = $settings->get('host');
-        var_dump($host);
-        exit();
-        RedBean::setup('mysql:host=localhost;dbname=mydatabase', 'user','password');
-        $this->isIstanced = TRUE;
-    }
     
-    public function getSingleContent($slug)
+    public function __construct()
     {
         
     }
     
-    public function getMultipleContents($slug = array())
+    public function setId($id)
     {
-        
+        return $this->id = $id;
     }
     
-    public static function addContent($data = array())
+    public function setSlug($slug)
     {
-        
+        return $this->slug = $slug;
     }
     
-    public static function editContent($slug, $data = array())
+    public function setTitle($title)
     {
-        
+        return $this->title = $title;
     }
     
-    public static function deleteContent($slug)
+    public function setContent($content)
     {
-        
+        return $this->content = $content;
     }
+    
+    public function setAuthor($author)
+    {
+        return $this->author = $author;
+    }
+    
 }

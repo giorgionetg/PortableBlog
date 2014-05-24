@@ -50,6 +50,7 @@ class PortableBlog {
                 break;
         }
         $this->request = Request::createFromGlobals();
+        $this->base_url = $settings->get('base_url');
     }
     
     /**
@@ -76,13 +77,13 @@ class PortableBlog {
      */
     public function getContent()
     {
-        //$this->execute();
+        $this->execute();
         //if ($this->plug->contentExist($this->request)){
             // Get Content
         //}
         
-        if (!$this->plug->contentExist(str_replace('/Blog/', '', $this->request->getRequestUri()))) {
-            if ($this->request->getRequestUri() != '/Blog/'){
+        if (!$this->plug->contentExist(str_replace('/' . $this->base_url . '/', '', $this->request->getRequestUri()))) {
+            if ($this->request->getRequestUri() != '/' . $this->base_url . '/'){
                 return '404: no content found';
             } else {
                 return $this->plug->getContent();
@@ -103,13 +104,15 @@ class PortableBlog {
      */
     public function execute()
     {
-        if (preg_match('^/api/.$', $this->request)) {
-            switch ($this->request) {
-                case preg_match('', $this->request):
+        if (preg_match('/\/api\/.*/', $this->request->getRequestUri())) {
+            /*switch ($this->request) {
+                case preg_match('/.*create\/|create/', $this->request->getRequestUri()):
+                    //$this->plug->getSingleContent('primo-articolo');
+                    return true;
                     break;
-            }
+            }*/
         }
-        return $string;
+        return false;
     }
     
 }

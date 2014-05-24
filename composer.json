@@ -1,5 +1,5 @@
-
-{    "name": "giorgionetg/PorableBlog",
+{    
+    "name": "giorgionetg/PorableBlog",
     "description": "A Blog/Page API you can bring everywhere",
     "version": "0.0.1-dev",
     "license": "WTFPL",

@@ -3,7 +3,7 @@
 namespace Giorgionetg\PortableBlog;
 
 use Symfony\Component\HttpFoundation\Request;
-//use Giorgionetg\PortableBlog\Content;
+use Giorgionetg\PortableBlog\Content;
 use Giorgionetg\PortableBlog\BlogInterface;
 use Giorgionetg\PortableBlog\Installation;
 use Doctrine\DBAL\Configuration;
@@ -82,7 +82,11 @@ class ApiBlog implements BlogInterface {
         $content->bindParam('slug', $slug);
         $content->execute();
         $data = $content->fetchAll();
-        return $data;
+        
+        $content = new Content();
+        $content->setTitle($data[0]['title']);
+        $content->setContent($data[0]['content']);
+        return $content;
     }
 
     public function contentExist($slug)
