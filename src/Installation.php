@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Giorgionetg\PortableBlog;
+namespace Giorgionetg\CmsLib;
 
 use Exception;
 
